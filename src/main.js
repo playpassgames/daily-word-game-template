@@ -5,6 +5,9 @@ import "./boilerplate/header.js";
 import "./main.css";
 
 import "./boilerplate/screens";
+import "./components/grid-element";
+import "./components/keyboard-element";
+
 import "./screens/gameScreen/game-screen";
 import "./screens/resultsScreen/results-screen";
 import "./screens/helpScreen/help-screen";

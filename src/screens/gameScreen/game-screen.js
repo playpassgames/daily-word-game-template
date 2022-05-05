@@ -1,15 +1,10 @@
 import * as playpass from "playpass";
 import { asyncHandler, showScreen } from "../../boilerplate/screens";
+import { gridTagName } from "../../components/grid-element";
+import { keyboardTagName } from "../../components/keyboard-element";
 import state from "../../state";
 
-async function roll() {
-    await state.rollDice();
-    showScreen("#results-screen");
-}
-
 const template = document.querySelector("#game-screen");
-
-template.querySelector("button[name=roll]").onclick = roll;
 template.addEventListener(
     "active",
     asyncHandler(async () => {
@@ -20,14 +15,71 @@ template.addEventListener(
             return;
         }
 
-        const lastDay = await playpass.storage.get("lastDay");
-        if (lastDay == state.getCurrentDay()) {
-            // The player has already played today, load the dice and show the results screen
-            state.rolledDice = await playpass.storage.get("lastDice");
+        if (state.isDone()) {
+            // The player has already played today, show results
             showScreen("#results-screen");
-        } else {
-            // The player hasn't yet played today, show the playing screen
-            state.rolledDice = [];
+            return;
         }
+
+
+        // format title prompt based on real content
+        template.querySelector("#prompt").textContent = `Try to guess today's ${state.getCurrentWord().length} letter word`;
+
+        if (state.correctAnswer !== "string" && state.correctAnswer.hint) {
+            template.querySelector("#hint").textContent = `hint: ${state.correctAnswer.hint}`;
+        }
+
+        grid.attempts = state.attempts;
+        grid.length = state.getCurrentWord().length;
+
+        const viewState = {
+            guesses: state.store.guesses,
+            results: state.store.results,
+        };
+    
+        grid.setState(viewState);
+        keyboard.setState(viewState);
     }),
 );
+
+const grid = template.querySelector(gridTagName);
+
+const keyboard = template.querySelector(keyboardTagName);
+keyboard.addEventListener("key", event => {
+    if (state.isDone()) {
+        return;
+    }
+
+    const key = event.detail;
+    const word = state.currentGuess;
+    const correctAnswer = state.getCurrentWord();
+
+    if (key == "Enter") {
+        if (word.length !== correctAnswer.length) {
+            alert("Not enough letters");
+        } else if (state.words.includes(word)) {
+            state.submit();
+
+            if (state.isDone()) {
+                showScreen("#results-screen");
+            }
+        } else {
+            alert(`Invalid word: ${word}. Try another one!`);
+        }
+
+    } else if (key == "Delete") {
+        if (word.length) {
+            state.currentGuess = word.substring(0, word.length - 1);
+        }
+    } else if (word.length < correctAnswer.length) {
+        state.currentGuess = word + key;
+    }
+
+    const viewState = {
+        guesses: [...state.store.guesses, state.currentGuess],
+        results: state.store.results,
+    };
+
+    grid.setState(viewState);
+    keyboard.setState(viewState);
+});
