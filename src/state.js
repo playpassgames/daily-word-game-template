@@ -74,10 +74,6 @@ export default {
 
         return result;
     },
-    // Gets the current day number
-    getCurrentDay () {
-        return Math.floor(Date.now() / (1000 * 60 * 60 * 24));
-    },
     async login() {
         if (await playpass.account.login()) {
             document.body.classList.add("isLoggedIn");

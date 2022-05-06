@@ -1,5 +1,18 @@
+:root {
+    --grid-cell-bull: #6aaa64;
+    --grid-cell-bull-letter: white;
+    --grid-cell-cow: #c9b458;
+    --grid-cell-cow-letter: white;
+    --grid-cell-miss: #939598;
+    --grid-cell-miss-letter: white;
+    --grid-cell-empty: black;
+    --grid-cell-empty-letter: black;
+}
+
 word-game-grid {
-    display: block;
+    display: flex;
+    row-gap: 2px;
+    flex-direction: column;
 }
 
 /* Grid */
@@ -9,9 +22,10 @@ word-game-grid .cell {
     align-items: center;
     cursor: pointer;
     font-weight: bold;
-    color: black;
-    background-color: white;
-    border: 2px solid black;
+    color: var(--grid-cell-empty-letter);
+    background-color: transparent;
+    border: 2px solid var(--grid-cell-empty);
+    box-sizing: border-box;
 }
 
 /* Grid row */
@@ -23,25 +37,19 @@ word-game-grid > div {
 }
 
 word-game-grid .cell[s=b] {
-    border: 2px solid #6aaa64;
-    background-color: #6aaa64;
-    color: white;
+    border-color: var(--grid-cell-bull);
+    background-color: var(--grid-cell-bull);
+    color: var(--grid-cell-bull-letter);
 }
 
 word-game-grid .cell[s=c] {
-    border: 2px solid #c9b458;
-    background-color:#c9b458;
-    color: white;
+    border-color: var(--grid-cell-cow);
+    background-color: var(--grid-cell-cow);
+    color: var(--grid-cell-cow-letter);
 }
 
 word-game-grid .cell[s=n]{
-    border: 2px solid #939598;
-    background-color: #939598;
-    color: white;
-}
-
-word-game-grid .cell[s=_] {
-    color: black;
-    background-color: white;
-    border: 2px solid black;
+    border-color: var(--grid-cell-miss);
+    background-color: var(--grid-cell-miss);
+    color: var(--grid-cell-miss-letter);
 }

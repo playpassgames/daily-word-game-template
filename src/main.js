@@ -2,7 +2,6 @@ import * as playpass from "playpass";
 
 import "./boilerplate/common.css";
 import "./boilerplate/header.js";
-import "./main.css";
 
 import "./boilerplate/screens";
 import "./components/grid-element";
@@ -16,6 +15,8 @@ import "./screens/settingsScreen/settings-screen";
 
 import { showScreen } from "./boilerplate/screens";
 import state from "./state";
+
+import "./main.css";
 
 function onHelpClick () {
     showScreen("#help-screen");
