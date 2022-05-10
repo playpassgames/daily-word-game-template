@@ -39,7 +39,7 @@ template.addEventListener("active", () => {
     const nextGameAt = timer.getNextGameTime();
     timerUpdate = setInterval(() => {
         const until = timer.getUntil(nextGameAt);
-        template.querySelector("#timeLeft").textContent = `${until.hours}h ${until.minutes}m ${until.seconds}s until next roll`;
+        template.querySelector("#timeLeft").textContent = `${until.hours}h ${until.minutes}m ${until.seconds}s`;
     }, 1000);
 
     grid.attempts = state.attempts;
