@@ -24,18 +24,18 @@ export default {
         this.store = await state.loadObject();
 
         // correct case sensitivity
-        const words = dictionary.words.map(w => w.toUpperCase());
+        const words = dictionary.words;
 
         // allow only a subset of all words in the dictionary to be possible answers
         const choices = (dictionary.choices && dictionary.choices.length > 0)
-            ? dictionary.choices.map(w => w.toUpperCase())
+            ? dictionary.choices
             : words;
 
         // merge both sets just in case there are answers that aren't in the allowed list
         this.words = Array.from(new Set([
-            ...words,
-            ...choices,
-        ]));
+            ...words.map(c => typeof c === "string" ? c : c.word),
+            ...choices.map(c => typeof c === "string" ? c : c.word),
+        ])).map(s => s.toUpperCase());
 
         this.correctAnswer = dictionary.lookup[this.store.day.toString()] || choices[this.store.day % choices.length];
     },
