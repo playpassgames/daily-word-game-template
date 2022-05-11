@@ -74,6 +74,7 @@ export class Keyboard extends HTMLElement {
                 this.dispatchEvent(new CustomEvent("key", { detail: key }));
             }
         });
+
         
         this.innerHTML = template;
     }
@@ -102,6 +103,8 @@ export class Keyboard extends HTMLElement {
                 }
             }
         }
+
+        this.children.item(guesses.length - 1).focus();
     }
 }
 

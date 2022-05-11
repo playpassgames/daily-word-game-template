@@ -4,9 +4,15 @@ template.innerHTML = `
     :host {
         display: flex;
         align-items: center;
-        margin-bottom: 20px;
         border-bottom: 1px solid var(--text-muted);
-        padding: 12px 0;
+        padding: 12px 20px;
+        background: var(--background-body);
+    }
+
+    :host([sticky]) {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0px;
     }
 
     :host .brand {

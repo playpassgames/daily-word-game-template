@@ -4,6 +4,8 @@ import { gridTagName } from "../../components/grid-element";
 import { keyboardTagName } from "../../components/keyboard-element";
 import state from "../../state";
 
+import "./game-screen.css";
+
 const template = document.querySelector("#game-screen");
 template.addEventListener(
     "active",

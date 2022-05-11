@@ -1,10 +1,31 @@
+:root {
+    --keyboard-key-font: Arial, sans-serif;
+    --keyboard-key-letter: black;
+    --keyboard-key-color: #ccc;
+    --keyboard-key-pressed: gray;
+    --keyboard-key-pressed-letter: white;
+    --keyboard-key-bull: #6aaa64;
+    --keyboard-key-bull-letter: white;
+    --keyboard-key-cow: #c9b458;
+    --keyboard-key-cow-letter: white;
+}
+
 word-game-keyboard {
     display: block;
-    margin-top: 50px;
+    position: -webkit-sticky;
+    position: sticky;
+    max-width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 0;
+    padding: 8px;
+    box-sizing: border-box;
+    background: var(--background-body);
 }
 
 /* Keyboard row */
-word-game-keyboard > div {
+word-game-keyboard .row {
     display: flex;
     justify-content: center;
     gap: 2px;
@@ -12,29 +33,31 @@ word-game-keyboard > div {
 }
 
 /* Keyboard key */
-word-game-keyboard > div > div {
+word-game-keyboard .key {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 40px;
     height: 56px;
     border-radius: 4px;
-    background: #ccc;
+    background: var(--keyboard-key-color);
     cursor: pointer;
+    color: var(--keyboard-key-letter);
     font-weight: bold;
+    font-family: var(--keyboard-key-font);
 }
 
-word-game-keyboard > div > div[s=b] {
-    background-color: #6aaa64;
-    color: white;
+word-game-keyboard .key[s=b] {
+    background-color: var(--keyboard-key-bull);
+    color: var(--keyboard-key-bull-letter);
 }
 
-word-game-keyboard > div > div[s=c] {
-    background-color:#c9b458;
-    color: white;
+word-game-keyboard .key[s=c] {
+    background-color:var(--keyboard-key-cow);
+    color: var(--keyboard-key-cow-letter);
 }
 
-word-game-keyboard > div > div[s=n] {
-    background-color: gray;
-    color: white;
+word-game-keyboard .key[s=n] {
+    background-color: var(--keyboard-key-pressed);
+    color: var(--keyboard-key-pressed-letter);
 }

@@ -3,10 +3,13 @@ template.innerHTML = `
     <style>
         ::slotted(*) {
             display: none;
+            box-sizing: border-box;
+            flex: 1;
+            max-width: 100%;
         }
 
         :host {
-            display: block;
+            display: flex;
             flex: 1;
         }
 

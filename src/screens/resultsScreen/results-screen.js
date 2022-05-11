@@ -5,6 +5,8 @@ import { gridTagName } from "../../components/grid-element";
 import { keyboardTagName } from "../../components/keyboard-element";
 import state from "../../state";
 
+import "./results-screen.css";
+
 function share() {
     // Create a link to our game
     const link = playpass.createLink();

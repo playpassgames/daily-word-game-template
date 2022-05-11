@@ -1,0 +1,5 @@
+#game-screen[active] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

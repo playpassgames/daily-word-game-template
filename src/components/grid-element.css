@@ -13,6 +13,8 @@ word-game-grid {
     display: flex;
     row-gap: 2px;
     flex-direction: column;
+    flex: 1;
+    margin-bottom: 20px;
 }
 
 /* Grid */
