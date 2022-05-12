@@ -103,8 +103,6 @@ export class Keyboard extends HTMLElement {
                 }
             }
         }
-
-        this.children.item(guesses.length - 1).focus();
     }
 }
 
