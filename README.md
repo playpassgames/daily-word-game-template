@@ -32,5 +32,5 @@ playpass deploy
 
 ## Links
 
-- [Documentation](https://wasm4.org/docs): Learn more about Playpass.
+- [Documentation](https://docs.playpass.games): Learn more about Playpass.
 - [GitHub](https://github.com/playpassgames/playpass): Submit an issue or PR. Contributions are welcome!
