@@ -1,4 +1,5 @@
 # Built with Playpass:
 # https://playpass.games
 
-game_id = "template"
+game_id = "YOUR_GAME_ID"
+game_name = "YOUR_GAME_NAME"

@@ -20,3 +20,8 @@ export function getDay (date) {
 export function getCurrentDay () {
     return getDay (Date.now());
 }
+
+export function getDaysSince(date) {
+    var now = new Date().getTime();
+    return Math.floor(Math.abs(now - date) / (1000 * 60 * 60 * 24));
+}
