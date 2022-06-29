@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui" />
-  <title><%= title %></title>
+  <title class="playpass-cms-brand">Daily Word</title>
   <script type="module" src="/src/main.js"></script>
 </head>
 <body>
 
   <game-header sticky>
     <div class="button" name="help" slot="buttons-left"></div>
-    <h2 slot="brand"><%= title %></h2>
+    <h2 slot="brand" class="playpass-cms-brand">Daily Word</h2>
     <div class="button" name="stats" slot="buttons-right"></div>
     <div class="button" name="settings" slot="buttons-right"></div>
   </game-header>
@@ -38,7 +38,7 @@
     </div>
 
     <div id="help-screen" slot="screen">
-      <h2>Welcome to <%= title %>!</h2>
+      <h2>Welcome to <span class="playpass-cms-brand">Daily Word!</span></h2>
       <p>This is an example of how to use the Playpass SDK to build a simple daily level word game.</p>
       <p>Each day, there's a different 5 letter word to guess You have 6 tries to get it right!</p>
       <button name="back">Continue</button>

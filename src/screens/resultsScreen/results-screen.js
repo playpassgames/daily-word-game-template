@@ -4,18 +4,18 @@ import * as timer from "../../boilerplate/timer";
 import { gridTagName } from "../../components/grid-element";
 import { keyboardTagName } from "../../components/keyboard-element";
 import state from "../../state";
-import { playpass_game_name_ } from "../../constants";
 
 import "./results-screen.css";
+import content from "../../content";
 
 function share() {
     // Create a link to our game
     const link = playpass.createLink();
 
     // Share some text along with our link
-    const text = `${playpass_game_name_} #` + (state.store.day + 1) + " " + (!state.isSolved() ? "X" : state.store.results.length.toString()) +
+    const text = `${content.getGameContent('name')} #` + (state.store.day + 1) + " " + (!state.isSolved() ? "X" : state.store.results.length.toString()) +
     "/6\n\n" + state.store.results.map(
-    str => str.replace(/n/g, "⬜").replace(/b/g, "🟩").replace(/c/g, "🟨"))
+    str => str.replace(/n/g, content.getGameContent('skipGuess')).replace(/b/g, content.getGameContent('goodGuess')).replace(/c/g, content.getGameContent('badGuess')))
     .join("\n") + "\n\n" + link;
 
     // Share some text along with our link

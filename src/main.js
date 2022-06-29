@@ -18,6 +18,7 @@ import state from "./state";
 
 import "./main.css";
 import {playpass_game_id_} from "./constants";
+import content from "./content";
 
 function onHelpClick () {
     showScreen("#help-screen");
@@ -37,6 +38,7 @@ function onSettingsClick () {
         gameId: playpass_game_id_, // Do not edit!
     });
 
+    await content.init();
     await state.init();
 
     showScreen("#game-screen");

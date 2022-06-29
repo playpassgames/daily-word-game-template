@@ -5,6 +5,7 @@ import DailyModel from "./models/dailyModel";
 import * as dictionary from "../content/dictionary.json";
 import {getMarks} from "./components/keyState";
 import {getDaysSince} from "./boilerplate/timer";
+import content from "./content";
 
 const MAX_ATTEMPTS = 6;
 
@@ -25,10 +26,8 @@ export default {
         this.store = await state.loadObject();
 
         // correct case sensitivity
-        const result = await fetch('playpass-content.json');
-        const playpassContent = await result.json();
-        const playpassChoices = playpassContent.elements.map((entry) => entry.word) || [];
-        const day = getDaysSince(playpassContent.startDate ?? new Date().getTime());
+        const playpassChoices = content.getDailyContent().map((entry) => entry.word) || [];
+        const day = getDaysSince(content.getDailyContentStartDate() ?? new Date().getTime());
 
         const words = dictionary.words;
 
