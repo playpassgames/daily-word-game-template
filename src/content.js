@@ -1,6 +1,6 @@
 export default {
-    _dailyContent: null,
     _gameContent: null,
+    _gameCustomisation: null,
 
     async init() {
         await this.loadContent();
@@ -9,12 +9,12 @@ export default {
     },
 
     async loadContent() {
-        if (!this._dailyContent) {
-            this._dailyContent = await this.loadJson('playpass-content.json');
+        if (!this._gameContent) {
+            this._gameContent = await this.loadJson('playpass-content.json');
         }
 
-        if (!this._gameContent) {
-            this._gameContent = await this.loadJson('playpass-customisation.json');
+        if (!this._gameCustomisation) {
+            this._gameCustomisation = await this.loadJson('playpass.json');
         }
     },
 
@@ -24,19 +24,19 @@ export default {
     },
 
     getGameContent(key) {
-        return this._gameContent[key];
+        return this._gameCustomisation[key];
     },
 
     getDailyContent() {
-        return this._dailyContent.elements;
+        return this._gameContent.elements;
     },
 
     getDailyContentStartDate() {
-        return this._dailyContent.startDate;
+        return this._gameContent.startDate;
     },
 
     applyContent() {
-        const keys = Object.keys(this._gameContent);
+        const keys = Object.keys(this._gameCustomisation);
 
         for (let key of keys) {
             const elements = document.getElementsByClassName(`playpass-cms-${key}`);
@@ -45,7 +45,7 @@ export default {
                 continue;
             }
 
-            let value = this._gameContent[key];
+            let value = this._gameCustomisation[key];
             let newValue = value;
             let regex = /\{\{ ?([A-Za-z]*) ?\}\}/g;
 
@@ -53,7 +53,7 @@ export default {
             do {
                 match = regex.exec(value);
                 if (match && keys.includes(match[1])) {
-                    newValue = newValue.replace(match[0], this._gameContent[match[1]]);
+                    newValue = newValue.replace(match[0], this._gameCustomisation[match[1]]);
                 }
             } while (match);
 
@@ -64,19 +64,19 @@ export default {
     },
 
     loadFavicon() {
-        if (!this._gameContent.favicon) {
+        if (!this._gameCustomisation.favicon) {
             return;
         }
 
-        switch (this._gameContent.favicon.type) {
+        switch (this._gameCustomisation.favicon.type) {
             case "emoji":
-                this.emojiFavicon(this._gameContent.favicon);
+                this.emojiFavicon(this._gameCustomisation.favicon);
                 break;
             case "base64":
-                this.base64Favicon(this._gameContent.favicon);
+                this.base64Favicon(this._gameCustomisation.favicon);
                 break;
             case "url":
-                this.urlFavicon(this._gameContent.favicon);
+                this.urlFavicon(this._gameCustomisation.favicon);
                 break;
         }
     },

@@ -9,7 +9,7 @@
     "lint": "eslint --fix src"
   },
   "dependencies": {
-    "playpass": "^1.1.3"
+    "playpass": "^1.9.1"
   },
   "devDependencies": {
     "@iarna/toml": "^2.2.5",
