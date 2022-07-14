@@ -7,7 +7,7 @@ import { getCurrentDay, getDay } from "./timer";
 export class DailyModel extends Model {
     constructor (firstDate) {
         super();
-        this.day = getCurrentDay() - getDay(firstDate);
+        this.day = Math.max(0, getCurrentDay() - getDay(firstDate));
     }
 
     data() {
@@ -23,10 +23,10 @@ export class DailyModel extends Model {
                 ...this.data(),
             };
         }
-        
+
         return state;
     }
-    
+
     /** Gets a random number between 0 and 1 unique to this day. */
     random () {
         return ((1103515245*this.day + 12345) >>> 0) / 0xffffffff;
