@@ -6,7 +6,7 @@ import { keyboardTagName } from "../../components/keyboard-element";
 import state from "../../state";
 
 import "./results-screen.css";
-import content from "../../content";
+import content from "../../boilerplate/content";
 
 function share() {
     // Create a link to our game

@@ -1,12 +1,7 @@
 {
-  "favicon": {
-    "value": "📖",
-    "type": "emoji"
-  },
   "name": "My Super Word Game",
-  "title": "✍️ {{ name }} ✍️",
-  "brand": "📓 {{ name }} 📓",
   "goodGuess": "📗",
   "badGuess": "📕",
-  "skipGuess": "📙"
+  "skipGuess": "📙",
+  "theme": "boldPurple"
 }

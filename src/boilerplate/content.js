@@ -1,20 +1,33 @@
 export default {
+    _dailyContent: null,
     _gameContent: null,
-    _gameCustomisation: null,
 
     async init() {
         await this.loadContent();
         this.loadFavicon();
         this.applyContent();
+        this.eventListeners();
+    },
+
+    async eventListeners() {
+        window.addEventListener('message', (event) => {
+            const parsed = JSON.parse(event.data);
+            if (parsed.type !== 'playpass-style-cms') {
+                return;
+            }
+            this._gameContent = parsed.data;
+            this.loadFavicon();
+            this.applyContent();
+        });
     },
 
     async loadContent() {
-        if (!this._gameContent) {
-            this._gameContent = await this.loadJson('playpass-content.json');
+        if (!this._dailyContent) {
+            this._dailyContent = await this.loadJson('playpass-content.json');
         }
 
-        if (!this._gameCustomisation) {
-            this._gameCustomisation = await this.loadJson('playpass.json');
+        if (!this._gameContent) {
+            this._gameContent = await this.loadJson('playpass.json');
         }
     },
 
@@ -24,28 +37,34 @@ export default {
     },
 
     getGameContent(key) {
-        return this._gameCustomisation[key];
+        return () => this._gameContent?.[key];
     },
 
-    getDailyContent() {
-        return this._gameContent.elements;
-    },
-
-    getDailyContentStartDate() {
-        return this._gameContent.startDate;
+    getDailyContent(key) {
+        return this._dailyContent?.[key];
     },
 
     applyContent() {
-        const keys = Object.keys(this._gameCustomisation);
+        const keys = Object.keys(this._gameContent);
+
+        const theme = this._gameContent.theme ?? 'default';
+        if (theme) {
+            document.documentElement.setAttribute('playpass-cms-theme', theme);
+        }
 
         for (let key of keys) {
-            const elements = document.getElementsByClassName(`playpass-cms-${key}`);
-
-            if (!elements || elements.length === 0) {
+            if (key === 'theme') {
                 continue;
             }
 
-            let value = this._gameCustomisation[key];
+            const elements = document.getElementsByClassName(`playpass-cms-${key}`);
+            const styles = getComputedStyle(document.body).getPropertyValue(`--playpass-cms-${key}`);
+
+            if ((!elements || elements.length === 0) && styles === '') {
+                continue;
+            }
+
+            let value = this._gameContent[key];
             let newValue = value;
             let regex = /\{\{ ?([A-Za-z]*) ?\}\}/g;
 
@@ -53,30 +72,34 @@ export default {
             do {
                 match = regex.exec(value);
                 if (match && keys.includes(match[1])) {
-                    newValue = newValue.replace(match[0], this._gameCustomisation[match[1]]);
+                    newValue = newValue.replace(match[0], this._gameContent[match[1]]);
                 }
             } while (match);
 
             for (let ele of elements) {
                 ele.innerText = newValue;
             }
+
+            if (styles) {
+                document.documentElement.style.setProperty(`--playpass-cms-${key}`, newValue);
+            }
         }
     },
 
     loadFavicon() {
-        if (!this._gameCustomisation.favicon) {
+        if (!this._gameContent.favicon) {
             return;
         }
 
-        switch (this._gameCustomisation.favicon.type) {
+        switch (this._gameContent.favicon.type) {
             case "emoji":
-                this.emojiFavicon(this._gameCustomisation.favicon);
+                this.emojiFavicon(this._gameContent.favicon);
                 break;
             case "base64":
-                this.base64Favicon(this._gameCustomisation.favicon);
+                this.base64Favicon(this._gameContent.favicon);
                 break;
             case "url":
-                this.urlFavicon(this._gameCustomisation.favicon);
+                this.urlFavicon(this._gameContent.favicon);
                 break;
         }
     },

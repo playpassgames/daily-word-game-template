@@ -5,16 +5,14 @@
       "type": "object",
       "properties": {
         "type": "string",
-        "enum": ["emoji", "base64", "url"]
+        "enum": [
+          "emoji",
+          "base64",
+          "url"
+        ]
       }
     },
     "name": {
-      "type": "string"
-    },
-    "brand": {
-      "type": "string"
-      },
-    "title": {
       "type": "string"
     },
     "goodGuess": {
@@ -25,7 +23,171 @@
     },
     "skipGuess": {
       "type": "string"
+    },
+    "theme": {
+      "title": "Theme",
+      "type": "string",
+      "default": "default",
+      "enum": [
+        "default",
+        "skyBlue",
+        "forestGreen",
+        "groovyPink",
+        "boldPurple"
+      ]
+    },
+    "backgroundColor": {
+      "title": "Background Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "white",
+        "skyBlue": "#8E99FF",
+        "forestGreen": "#95A72E",
+        "groovyPink": "#FEBECF",
+        "boldPurple": "#BF7FEB"
+      }
+    },
+    "textColor": {
+      "title": "Text Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "black",
+        "skyBlue": "white",
+        "forestGreen": "white",
+        "groovyPink": "white",
+        "boldPurple": "white"
+      }
+    },
+    "keyColor": {
+      "title": "Key Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "#ccc",
+        "skyBlue": "#12046828",
+        "forestGreen": "#1C2008",
+        "groovyPink": "#5E989D",
+        "boldPurple": "#147A14"
+      }
+    },
+    "keyTextColor": {
+      "title": "Key Text Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "black",
+        "skyBlue": "white",
+        "forestGreen": "white",
+        "groovyPink": "white",
+        "boldPurple": "white"
+      }
+    },
+    "cellEmptyColor": {
+      "title": "Cell Empty Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "black",
+        "skyBlue": "#12046828",
+        "forestGreen": "#1C2008",
+        "groovyPink": "#E69857",
+        "boldPurple": "#643585"
+      }
+    },
+    "cellEmptyTextColor": {
+      "title": "Cell Empty Text Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "black",
+        "skyBlue": "white",
+        "forestGreen": "white",
+        "groovyPink": "white",
+        "boldPurple": "white"
+      }
+    },
+    "correctGuessColor": {
+      "title": "Correct Guess Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "#6aaa64",
+        "skyBlue": "#88DA05",
+        "forestGreen": "#93D629",
+        "groovyPink": "#87CB5B",
+        "boldPurple": "#54D554"
+      }
+    },
+    "correctGuessTextColor": {
+      "title": "Correct Guess Text Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "white",
+        "skyBlue": "white",
+        "forestGreen": "white",
+        "groovyPink": "white",
+        "boldPurple": "white"
+      }
+    },
+    "wrongGuessColor": {
+      "title": "Wrong Guess Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "gray",
+        "skyBlue": "#1204683c",
+        "forestGreen": "#4F5C07",
+        "groovyPink": "#6C452C",
+        "boldPurple": "#643585"
+      }
+    },
+    "wrongGuessTextColor": {
+      "title": "Wrong Guess Text Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "white",
+        "skyBlue": "white",
+        "forestGreen": "white",
+        "groovyPink": "white",
+        "boldPurple": "white"
+      }
+    },
+    "missedGuessColor": {
+      "title": "Missed Guess Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "#c9b458",
+        "skyBlue": "#F4C829",
+        "forestGreen": "#FBB120",
+        "groovyPink": "#5E989D",
+        "boldPurple": "#FBC436"
+      }
+    },
+    "missedGuessTextColor": {
+      "title": "Missed Guess Text Color",
+      "$ref": "#/definitions/color",
+      "themeDefaults": {
+        "default": "white",
+        "skyBlue": "white",
+        "forestGreen": "white",
+        "groovyPink": "white",
+        "boldPurple": "white"
+      }
     }
   },
-  "required": [ "brand" ]
+  "definitions": {
+    "favicon": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "emoji",
+            "base64",
+            "url"
+          ]
+        },
+        "value": {
+          "type": "string"
+        }
+      }
+    },
+    "color": {
+      "type": "string"
+    }
+  }
 }

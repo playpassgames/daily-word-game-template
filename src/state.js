@@ -5,7 +5,7 @@ import DailyModel from "./models/dailyModel";
 import * as dictionary from "../content/dictionary.json";
 import {getMarks} from "./components/keyState";
 import {getDaysSince} from "./boilerplate/timer";
-import content from "./content";
+import content from "./boilerplate/content";
 
 const MAX_ATTEMPTS = 6;
 
@@ -26,8 +26,8 @@ export default {
         this.store = await state.loadObject();
 
         // correct case sensitivity
-        const playpassChoices = content.getDailyContent().map((entry) => entry.word) || [];
-        const day = getDaysSince(content.getDailyContentStartDate() ?? new Date().getTime());
+        const playpassChoices = content.getDailyContent('elements').map((entry) => entry.word) || [];
+        const day = getDaysSince(content.getDailyContent('startDate') ?? new Date().getTime());
 
         const words = dictionary.words;
 

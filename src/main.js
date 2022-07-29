@@ -18,7 +18,7 @@ import state from "./state";
 
 import "./main.css";
 import {playpass_game_id_} from "./constants";
-import content from "./content";
+import content from "./boilerplate/content";
 
 function onHelpClick () {
     showScreen("#help-screen");

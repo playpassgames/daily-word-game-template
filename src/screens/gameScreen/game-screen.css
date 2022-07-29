@@ -3,3 +3,7 @@
     flex-direction: column;
     align-items: center;
 }
+
+#game-screen {
+    color: var(--text-color);
+}

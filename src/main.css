@@ -1,3 +1,7 @@
+@import url('./boilerplate/common.css');
+
+@import url('./vars.css');
+
 game-header .button[name="help"] {
     background: url(./assets/help.svg);
 }
@@ -18,6 +22,15 @@ game-header .button {
 
 game-header h2 {
     margin: 0;
+    color: var(--text-color);
+}
+
+screen-router {
+    color: var(--text-color);
+}
+
+screen-router h2 {
+    color: var(--text-color);
 }
 
 /* prefer center text alignment in our game design */

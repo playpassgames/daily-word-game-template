@@ -1,12 +1,14 @@
 {
   "name": "template",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "scripts": {
     "start": "vite --open --host",
     "build": "vite build",
     "test": "eslint src",
-    "lint": "eslint --fix src"
+    "lint": "eslint --fix src",
+    "deploy:staging": "npm run build && aws s3 sync . s3://template-bucket-staging/daily-word-game/$(jq -r .version ./package.json) --delete --exclude '.github/*' --exclude 'node_modules/*' --exclude '.git/*' --exclude '.idea/*'",
+    "deploy": "npm run build && aws s3 sync . s3://playpass-template-bucket/daily-word-game/$(jq -r .version ./package.json) --delete --exclude '.github/*' --exclude 'node_modules/*' --exclude '.git/*' --exclude '.idea/*'"
   },
   "dependencies": {
     "playpass": "^1.9.1"

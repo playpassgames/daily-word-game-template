@@ -1,0 +1,96 @@
+:root {
+    --keyboard-key-font: Arial, sans-serif;
+    --background-body: var(--playpass-cms-backgroundColor);
+    --text-color: var(--playpass-cms-textColor);
+    --keyboard-key-letter: var(--playpass-cms-keyTextColor);
+    --keyboard-key-color: var(--playpass-cms-keyColor);
+    --keyboard-key-pressed: var(--playpass-cms-wrongGuessColor);
+    --keyboard-key-pressed-letter: var(--playpass-cms-wrongGuessTextColor);
+    --keyboard-key-bull: var(--playpass-cms-correctGuessColor);
+    --keyboard-key-bull-letter: var(--playpass-cms-correctGuessTextColor);
+    --keyboard-key-cow: var(--playpass-cms-missedGuessColor);
+    --keyboard-key-cow-letter: var(--playpass-cms-missedGuessTextColor);
+    --grid-cell-bull: var(--playpass-cms-correctGuessColor);
+    --grid-cell-bull-letter: var(--playpass-cms-correctGuessTextColor);
+    --grid-cell-cow: var(--playpass-cms-missedGuessColor);
+    --grid-cell-cow-letter: var(--playpass-cms-missedGuessTextColor);
+    --grid-cell-miss: var(--playpass-cms-wrongGuessColor);
+    --grid-cell-miss-letter: var(--playpass-cms-wrongGuessTextColor);
+    --grid-cell-empty: var(--playpass-cms-cellEmptyColor);
+    --grid-cell-empty-letter: var(--playpass-cms-cellEmptyTextColor);
+}
+
+[playpass-cms-theme="default"] {
+    --playpass-cms-backgroundColor: white;
+    --playpass-cms-textColor: black;
+    --playpass-cms-keyColor: #ccc;
+    --playpass-cms-keyTextColor: black;
+    --playpass-cms-cellEmptyColor: black;
+    --playpass-cms-cellEmptyTextColor: black;
+    --playpass-cms-correctGuessColor: #6aaa64;
+    --playpass-cms-correctGuessTextColor: white;
+    --playpass-cms-wrongGuessColor: gray;
+    --playpass-cms-wrongGuessTextColor: white;
+    --playpass-cms-missedGuessColor: #c9b458;
+    --playpass-cms-missedGuessTextColor: white;
+}
+
+[playpass-cms-theme="skyBlue"] {
+    --playpass-cms-backgroundColor: #8E99FF;
+    --playpass-cms-textColor: white;
+    --playpass-cms-keyColor: #12046828;
+    --playpass-cms-keyTextColor: white;
+    --playpass-cms-cellEmptyColor: #12046828;
+    --playpass-cms-cellEmptyTextColor: white;
+    --playpass-cms-correctGuessColor: #88DA05;
+    --playpass-cms-correctGuessTextColor: white;
+    --playpass-cms-wrongGuessColor: #1204683c;
+    --playpass-cms-wrongGuessTextColor: white;
+    --playpass-cms-missedGuessColor: #F4C829;
+    --playpass-cms-missedGuessTextColor: white;
+}
+
+[playpass-cms-theme="forestGreen"] {
+    --playpass-cms-backgroundColor: #95A72E;
+    --playpass-cms-textColor: white;
+    --playpass-cms-keyColor: #1C2008;
+    --playpass-cms-keyTextColor: white;
+    --playpass-cms-cellEmptyColor: #1C2008;
+    --playpass-cms-cellEmptyTextColor: white;
+    --playpass-cms-correctGuessColor: #93D629;
+    --playpass-cms-correctGuessTextColor: white;
+    --playpass-cms-wrongGuessColor: #4F5C07;
+    --playpass-cms-wrongGuessTextColor: white;
+    --playpass-cms-missedGuessColor: #FBB120;
+    --playpass-cms-missedGuessTextColor: white;
+}
+
+[playpass-cms-theme="groovyPink"] {
+    --playpass-cms-backgroundColor: #FEBECF;
+    --playpass-cms-keyColor: #5E989D;
+    --playpass-cms-cellEmptyColor: #E69857;
+    --playpass-cms-correctGuessColor: #87CB5B;
+    --playpass-cms-wrongGuessColor: #6C452C;
+    --playpass-cms-missedGuessColor: #5E989D;
+    --playpass-cms-textColor: #6C452C;
+    --playpass-cms-keyTextColor: white;
+    --playpass-cms-cellEmptyTextColor: white;
+    --playpass-cms-correctGuessTextColor: white;
+    --playpass-cms-wrongGuessTextColor: white;
+    --playpass-cms-missedGuessTextColor: white;
+}
+
+[playpass-cms-theme="boldPurple"] {
+    --playpass-cms-backgroundColor: #BF7FEB;
+    --playpass-cms-keyColor: #147A14;
+    --playpass-cms-cellEmptyColor: #643585;
+    --playpass-cms-correctGuessColor: #54D554;
+    --playpass-cms-wrongGuessColor: #643585;
+    --playpass-cms-missedGuessColor: #FBC436;
+    --playpass-cms-textColor: #FCD436;
+    --playpass-cms-keyTextColor: white;
+    --playpass-cms-cellEmptyTextColor: white;
+    --playpass-cms-correctGuessTextColor: white;
+    --playpass-cms-wrongGuessTextColor: white;
+    --playpass-cms-missedGuessTextColor: white;
+}

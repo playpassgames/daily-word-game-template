@@ -1,15 +1,3 @@
-:root {
-    --keyboard-key-font: Arial, sans-serif;
-    --keyboard-key-letter: black;
-    --keyboard-key-color: #ccc;
-    --keyboard-key-pressed: gray;
-    --keyboard-key-pressed-letter: white;
-    --keyboard-key-bull: #6aaa64;
-    --keyboard-key-bull-letter: white;
-    --keyboard-key-cow: #c9b458;
-    --keyboard-key-cow-letter: white;
-}
-
 word-game-keyboard {
     display: block;
     position: -webkit-sticky;

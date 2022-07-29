@@ -1,13 +1,4 @@
-:root {
-    --grid-cell-bull: #6aaa64;
-    --grid-cell-bull-letter: white;
-    --grid-cell-cow: #c9b458;
-    --grid-cell-cow-letter: white;
-    --grid-cell-miss: #939598;
-    --grid-cell-miss-letter: white;
-    --grid-cell-empty: black;
-    --grid-cell-empty-letter: black;
-}
+@import url('../vars.css');
 
 word-game-grid {
     display: flex;
