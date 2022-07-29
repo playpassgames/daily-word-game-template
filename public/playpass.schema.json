@@ -1,17 +1,6 @@
 {
   "type": "object",
   "properties": {
-    "favicon": {
-      "type": "object",
-      "properties": {
-        "type": "string",
-        "enum": [
-          "emoji",
-          "base64",
-          "url"
-        ]
-      }
-    },
     "name": {
       "type": "string"
     },
