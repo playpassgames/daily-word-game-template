@@ -13,7 +13,7 @@ template.addEventListener(
         // Take new users to help screen first
         const sawTutorial = await playpass.storage.get("sawTutorial");
         if (!sawTutorial) {
-            showScreen("#help-screen");
+            showScreen("#about-screen");
             return;
         }
 

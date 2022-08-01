@@ -69,3 +69,7 @@ export function asyncHandler(fn){
 export function showScreen(name) {
     document.querySelector(routerTagName).setAttribute("open", name);
 }
+
+export function setScreenVisibility(name, state) {
+    document.querySelector(routerTagName).setAttribute(state, name);
+}
