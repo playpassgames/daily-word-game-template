@@ -21,7 +21,7 @@ import {playpass_game_id_} from "./constants";
 import content from "./boilerplate/content";
 
 function onHelpClick () {
-    showScreen("#help-screen");
+    showScreen("#about-screen");
 }
 
 function onStatsClick () {

@@ -5,7 +5,7 @@ function back() {
     showScreen("#game-screen");
 }
 
-const template = document.querySelector("#help-screen");
+const template = document.querySelector("#about-screen");
 
 template.querySelector("button[name=back]").onclick = back;
 template.addEventListener("active", () => {
