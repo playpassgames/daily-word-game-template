@@ -1,3 +1,5 @@
+import {share} from "../screens/resultsScreen/results-screen";
+
 const template = document.createElement('template');
 template.innerHTML = `
     <style>
@@ -28,11 +30,11 @@ template.innerHTML = `
 const routerTagName = "screen-router";
 
 window.customElements.define(
-    routerTagName, 
+    routerTagName,
     class extends HTMLElement {
         constructor() {
             super();
-    
+
             this.attachShadow({mode: 'open'});
             this.shadowRoot.appendChild(template.content.cloneNode(true));
         }
@@ -48,7 +50,7 @@ window.customElements.define(
                     prev.removeAttribute("active");
                     prev.dispatchEvent(new CustomEvent("inactive"));
                 }
-                
+
                 const next = this.querySelector(newValue);
                 next.setAttribute("active", "");
 
@@ -72,4 +74,50 @@ export function showScreen(name) {
 
 export function setScreenVisibility(name, state) {
     document.querySelector(routerTagName).setAttribute(state, name);
+}
+
+export function onHelpClick () {
+    showScreen("#about-screen");
+}
+
+export function onStatsClick () {
+    hideShare();
+    showScreen("#stats-screen");
+}
+
+export function onSettingsClick () {
+    hideShare();
+    showScreen("#settings-screen");
+}
+
+export function showGameScreen() {
+    hideShare();
+    showScreen("#game-screen");
+}
+
+function hideShare() {
+    let elements = document.getElementsByTagName("playpass-share");
+    if (elements && elements.length > 0) {
+        elements.item(0).remove();
+    }
+}
+
+function showShare() {
+    hideShare();
+    share();
+}
+
+export const screenHandlers = {
+    share: {
+        show: showShare,
+        hide: hideShare
+    },
+    home: {
+        show: showGameScreen,
+        hide: hideShare
+    },
+    help: {
+        show: onHelpClick,
+        hide: hideShare
+    }
 }

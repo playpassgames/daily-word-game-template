@@ -2,16 +2,23 @@
   "type": "object",
   "properties": {
     "name": {
+      "title": "Name",
       "type": "string"
     },
     "goodGuess": {
-      "type": "string"
+      "title": "Share emoji correct",
+      "screen": "share",
+      "$ref": "#/definitions/emoji"
     },
     "badGuess": {
-      "type": "string"
+      "title": "Share emoji incorrect",
+      "screen": "share",
+      "$ref": "#/definitions/emoji"
     },
     "skipGuess": {
-      "type": "string"
+      "title": "Share emoji skip",
+      "screen": "share",
+      "$ref": "#/definitions/emoji"
     },
     "theme": {
       "title": "Theme",
@@ -159,6 +166,9 @@
     }
   },
   "definitions": {
+    "emoji": {
+      "type": "string"
+    },
     "favicon": {
       "type": "object",
       "properties": {
