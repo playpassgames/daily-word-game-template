@@ -107,17 +107,22 @@ function showShare() {
     share();
 }
 
+function hideAll() {
+    hideShare();
+    showGameScreen();
+}
+
 export const screenHandlers = {
     share: {
         show: showShare,
-        hide: hideShare
+        hide: hideAll
     },
     home: {
         show: showGameScreen,
-        hide: hideShare
+        hide: hideAll
     },
     help: {
         show: onHelpClick,
-        hide: hideShare
+        hide: hideAll
     }
 }
