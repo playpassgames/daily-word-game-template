@@ -1,5 +1,6 @@
 {
   "type": "object",
+  "description": "Guess the word of the day in 5 tries or less",
   "properties": {
     "name": {
       "title": "Name",
