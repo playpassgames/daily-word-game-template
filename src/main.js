@@ -13,24 +13,19 @@ import "./screens/helpScreen/help-screen";
 import "./screens/statsScreen/stats-screen";
 import "./screens/settingsScreen/settings-screen";
 
-import { showScreen } from "./boilerplate/screens";
+import {
+    onHelpClick,
+    onSettingsClick,
+    onStatsClick,
+    screenHandlers,
+    showScreen
+} from "./boilerplate/screens";
+
 import state from "./state";
 
 import "./main.css";
 import {playpass_game_id_} from "./constants";
 import content from "./boilerplate/content";
-
-function onHelpClick () {
-    showScreen("#about-screen");
-}
-
-function onStatsClick () {
-    showScreen("#stats-screen");
-}
-
-function onSettingsClick () {
-    showScreen("#settings-screen");
-}
 
 (async function () {
     // Initialize the Playpass SDK
@@ -52,4 +47,19 @@ function onSettingsClick () {
     document.querySelector("game-header .button[name=help]").onclick = onHelpClick;
     document.querySelector("game-header .button[name=stats]").onclick = onStatsClick;
     document.querySelector("game-header .button[name=settings]").onclick = onSettingsClick;
+
+    content.eventHandler('playpass-content-cms', async () => {
+        await state.init();
+        showScreen("#game-screen");
+    });
+
+    content.eventHandler('playpass-style-cms-screen', async (event) => {
+        const screenName = event.data.screenName;
+        const action = event.data.action;
+        console.log(`Message handler! ${screenName} ${action}`);
+        const handler = screenHandlers[screenName][action];
+        if (handler) {
+            handler();
+        }
+    });
 })();

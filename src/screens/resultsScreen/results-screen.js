@@ -6,16 +6,16 @@ import { keyboardTagName } from "../../components/keyboard-element";
 import state from "../../state";
 
 import "./results-screen.css";
-import content from "../../boilerplate/content";
+import content from "../../content";
 
-function share() {
+export function share() {
     // Create a link to our game
     const link = playpass.createLink();
 
     // Share some text along with our link
-    const text = `${content.getGameContent('name')} #` + (state.store.day + 1) + " " + (!state.isSolved() ? "X" : state.store.results.length.toString()) +
+    const text = `${content.gameName()} #` + (state.store.day + 1) + " " + (!state.isSolved() ? "X" : state.store.results.length.toString()) +
     "/6\n\n" + state.store.results.map(
-    str => str.replace(/n/g, content.getGameContent('skipGuess')).replace(/b/g, content.getGameContent('goodGuess')).replace(/c/g, content.getGameContent('badGuess')))
+    str => str.replace(/n/g, content.emojis.skipGuess()).replace(/b/g, content.emojis.goodGuess()).replace(/c/g, content.emojis.badGuess()))
     .join("\n") + "\n\n" + link;
 
     // Share some text along with our link
